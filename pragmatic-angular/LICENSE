@@ -1,0 +1,119 @@
+# Pragmatic Angular
+
+Companion resources for **Pragmatic Angular: Building Dynamic Web Applications**
+by **Professor Richard Krasso**.
+
+This repository contains the downloadable resources referenced throughout the
+book, including starter projects, completed examples, and supporting materials
+used in each chapter. The resources are intended to accompany the book and
+provide readers with a practical, hands-on learning experience while working
+through the examples and exercises.
+
+---
+
+## Repository Contents
+
+This repository includes:
+
+- **Starter Projects** – Beginning code for chapter exercises and guided
+  examples.
+- **Completed Projects** – Fully implemented reference solutions for selected
+  chapters.
+- **Supporting Assets** – Configuration files, sample data, and additional
+  resources referenced throughout the book.
+
+---
+
+## Repository Organization
+
+```text
+pragmatic-angular/
+├── starter-projects/
+│   ├── chapter-01/
+│   ├── chapter-02/
+│   ├── chapter-03/
+│   └── ...
+│
+├── completed-projects/
+│   ├── chapter-01/
+│   ├── chapter-02/
+│   ├── chapter-03/
+│   └── ...
+│
+├── assets/
+│
+├── LICENSE
+└── README.md
+```
+
+Project folders correspond to the chapters in the book. Each chapter references
+the appropriate starter project or completed example as needed.
+
+---
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/buwebdev/pragmatic-angular.git
+```
+
+Open the appropriate project directory as you progress through the book and
+follow the chapter instructions.
+
+---
+
+## Requirements
+
+Projects in this repository may require the following software:
+
+- Node.js (LTS)
+- npm
+- Angular CLI
+- Visual Studio Code
+- Git
+
+Specific version requirements are identified within the corresponding chapters
+of the book.
+
+---
+
+## About the Book
+
+**Pragmatic Angular: Building Dynamic Web Applications** is a practical guide to
+developing modern web applications with Angular and TypeScript. The book
+introduces Angular's core concepts through progressively more advanced examples,
+emphasizing hands-on development and real-world implementation techniques.
+
+---
+
+## Reporting Issues
+
+If you discover an error in the code, documentation, or supporting materials,
+please open an issue in this repository.
+
+Constructive feedback and corrections are welcome and help improve future
+revisions of the companion resources.
+
+---
+
+## About buwebdev
+
+buwebdev develops open educational resources and companion materials that
+support modern web development education. This repository is maintained as the
+official companion resource for *Pragmatic Angular: Building Dynamic Web
+Applications*.
+
+---
+
+## License
+
+The source code contained in this repository is licensed under the **MIT
+License**.
+
+The accompanying textbook, **Pragmatic Angular: Building Dynamic Web
+Applications**, is a separate copyrighted work and is **not** included in this
+repository.
+
+© 2026 Professor Richard Krasso. All rights reserved.
