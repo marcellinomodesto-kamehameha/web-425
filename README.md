@@ -1,2 +1,6 @@
-# web-425
-Repository for WEB425-306O Angular with TypeScript
+# WEB 425 Angular with TypeScript
+
+## Contributors
+
+- Instructor: Richard Krasso
+- Marcellino Modesto
