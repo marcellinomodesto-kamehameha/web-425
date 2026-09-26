@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
-import { Order } from '../order/order.component';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Order, Taco } from '../order/order.component';
 
 @Component({
   selector: 'app-order-summary',
@@ -8,28 +8,67 @@ import { Order } from '../order/order.component';
   imports: [CommonModule],
   template: `
     <h1 class="w4-sr-only">Order Summary</h1>
+
     @if (order.tacos.length > 0) {
       <ul class="w4-summary-list">
-        @for (taco of order.tacos; track $index) {
+        @for (taco of order.tacos; track $index; let i = $index) {
           <li>
             <div class="w4-item-heading">
-              <strong>{{ taco.quantity }}x {{ taco.name }}</strong>
+              <strong>Item {{ i + 1 }}</strong>
+              <span>{{ taco.name }}</span>
             </div>
+
             <div class="w4-detail-list">
-              <p>Price per taco: <span>{{ taco.price | currency:'USD':'symbol':'1.2-2' }}</span></p>
-              @if (taco.noOnions) {
-                <p>No onions</p>
-              }
-              @if (taco.noCilantro) {
-                <p>No cilantro</p>
-              }
+              <p>
+                Quantity:
+                <span>{{ taco.quantity ?? 1 }}</span>
+              </p>
+
+              <p>
+                Price per taco:
+                <span>
+                  {{ taco.price | currency:'USD':'symbol':'1.2-2' }}
+                </span>
+              </p>
+
+              <p>
+                Line subtotal:
+                <span>
+                  {{ getLineSubtotal(taco) | currency:'USD':'symbol':'1.2-2' }}
+                </span>
+              </p>
+
+              <div>
+                <span>Customizations:</span>
+
+                @if (taco.noOnions || taco.noCilantro) {
+                  @if (taco.noOnions) {
+                    <p>No onions</p>
+                  }
+
+                  @if (taco.noCilantro) {
+                    <p>No cilantro</p>
+                  }
+                } @else {
+                  <p>None</p>
+                }
+              </div>
+
+              <button
+                type="button"
+                (click)="removeTaco.emit(taco)">
+                Remove Taco
+              </button>
             </div>
           </li>
         }
       </ul>
+
       <div class="w4-summary-total">
         <span>Total:</span>
-        <strong>{{ getTotal() | currency:'USD':'symbol':'1.2-2' }}</strong>
+        <strong>
+          {{ getTotal() | currency:'USD':'symbol':'1.2-2' }}
+        </strong>
       </div>
     } @else {
       <div class="w4-empty-state">
@@ -39,18 +78,32 @@ import { Order } from '../order/order.component';
   `
 })
 export class OrderSummaryComponent {
-  private readonly orderState = signal<Order>({ orderId: 0, tacos: [] });
+  private readonly orderState = signal<Order>({
+    orderId: 0,
+    tacos: []
+  });
 
   @Input()
   set order(value: Order) {
     this.orderState.set(value);
   }
 
+  @Output()
+  removeTaco = new EventEmitter<Taco>();
+
   get order() {
     return this.orderState();
   }
 
+  getLineSubtotal(taco: Taco) {
+    return taco.price * (taco.quantity ?? 1);
+  }
+
   getTotal() {
-    return this.order.tacos.reduce((acc, taco) => acc + (taco.price * (taco.quantity ?? 1)), 0);
+    return this.order.tacos.reduce(
+      (acc, taco) => acc + this.getLineSubtotal(taco),
+      0
+    );
   }
 }
+
