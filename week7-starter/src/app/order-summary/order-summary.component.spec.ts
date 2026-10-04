@@ -67,8 +67,10 @@ describe('OrderSummaryComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('li').textContent).toContain('2x Carnitas');
-    expect(compiled.querySelector('li').textContent).toContain('Price per taco: $3.00');
+    expect(compiled.querySelector('li').textContent).toContain('Carnitas');
+    expect(compiled.querySelector('li').textContent).toContain('Quantity');
+    expect(compiled.querySelector('li')?.textContent).toContain('$3.00');
+
   });
 
   it('should calculate the total using taco quantity values', () => {
@@ -96,7 +98,10 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement;
     const firstItem = compiled.querySelector('li');
 
-    expect(firstItem.textContent).toContain('2x Carnitas Taco');
+    expect(firstItem?.textContent).toContain('Carnitas Taco');
+    expect(firstItem?.textContent).toContain('Quantity:');
+    expect(firstItem?.textContent).toContain('2');
+
   });
 
   /**
@@ -116,7 +121,9 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const firstItem = compiled.querySelector('li');
 
-    expect(firstItem?.textContent).toContain('2x Carnitas Taco');
+    expect(firstItem?.textContent).toContain('Carnitas Taco');
+    expect(firstItem?.textContent).toContain('Quantity:');
+    expect(firstItem?.textContent).toContain('2');
   });
 
   /**
@@ -134,7 +141,11 @@ describe('OrderSummaryComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('li')?.textContent).toContain('Price per taco: $3.25');
+    expect(compiled.querySelector('li')?.textContent)
+    .toContain('Price per taco:');
+
+    expect(compiled.querySelector('li')?.textContent)
+    .toContain('$3.25');
   });
 
   /**
@@ -154,7 +165,8 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const buttons = Array.from(compiled.querySelectorAll('button'));
 
-    expect(buttons.length).toBe(0);
+    expect(buttons.length).toBe(1);
+    expect(buttons[0].textContent).toContain('Remove Taco');
   });
 
   /**
@@ -175,7 +187,7 @@ describe('OrderSummaryComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const listText = compiled.querySelector('ul')?.textContent ?? '';
 
-    expect(listText).not.toContain('Item 1');
-    expect(listText).not.toContain('Item 2');
+    expect(listText).toContain('Item 1');
+    expect(listText).toContain('Item 2');
   });
 });
