@@ -1,0 +1,56 @@
+
+<section class="featured-tacos">
+  <h2>Featured Tacos</h2>
+  <p>Explore our featured menu and find your next favorite.</p>
+
+  <nav class="filters" aria-label="Filter featured tacos">
+    <button
+      type="button"
+      (click)="setFilter('All')"
+      [attr.aria-pressed]="selectedLabel === 'All'">
+      All Tacos
+    </button>
+
+    <button
+      type="button"
+      (click)="setFilter('Spicy')"
+      [attr.aria-pressed]="selectedLabel === 'Spicy'">
+      Spicy
+    </button>
+
+    <button
+      type="button"
+      (click)="setFilter('Popular')"
+      [attr.aria-pressed]="selectedLabel === 'Popular'">
+      Popular
+    </button>
+
+    <button
+      type="button"
+      (click)="setFilter('New')"
+      [attr.aria-pressed]="selectedLabel === 'New'">
+      New
+    </button>
+  </nav>
+
+  <div class="taco-list">
+    @for (taco of filteredTacos; track taco.name) {
+      <article class="taco-card">
+        <span class="taco-label">{{ taco.label }}</span>
+
+        <h3>{{ taco.name }}</h3>
+        <p>{{ taco.description }}</p>
+        <p class="taco-price">{{ taco.price | currency:'USD' }}</p>
+
+        @if (taco.isChefPick) {
+          <section class="chef-pick" aria-label="Chef's Pick">
+            <h4>⭐ Chef's Pick</h4>
+            <p>Our chef's favorite, selected for its delicious flavor!</p>
+          </section>
+        }
+      </article>
+    } @empty {
+      <p>No tacos match this filter.</p>
+    }
+  </div>
+</section>

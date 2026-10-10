@@ -1,0 +1,72 @@
+
+:host {
+  display: block;
+}
+
+.featured-tacos {
+  padding: 2rem;
+}
+
+.featured-tacos h2 {
+  margin-bottom: 0.5rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+.filters button {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;;
+  cursor: pointer;
+}
+
+.filters button[aria-pressed="true"] {
+  background: #333;
+  color: #fff;
+}
+
+.taco-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.taco-card {
+  padding: 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.taco-label {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  background: gray;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.taco-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.chef-pick {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-left: 4px solid #d97706;
+  border-radius: 4px;
+}
+
+.chef-pick h4 {
+  margin-top: 0;
+}
+
+.chef-pick p {
+  margin-bottom: 0;
+}

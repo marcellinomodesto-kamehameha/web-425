@@ -35,6 +35,7 @@ import { AuthService } from './auth.service';
             <a class="w4-nav-link" routerLink="/order" routerLinkActive="active">Order</a>
             <a class="w4-nav-link" routerLink="/daily-specials" routerLinkActive="active">Daily Specials</a>
             <a class="w4-nav-link" routerLink="/feedback" routerLinkActive="active">Feedback</a>
+            <a class="w4-nav-link" routerLink="/featured-tacos" routerLinkActive="active">Featured</a>
           </div>
         </nav>
       </header>
